@@ -2,7 +2,13 @@
 
 require 'cleanfb'
 
+class String
+	def magenta;	"\e[35m#{self}\e[0m" end
+end
+
 cleaner = Cleanfb::Clean.new
 
 response = cleaner.remove
-puts response
+unless response.nil? || response.empty? || (response.include? "Please")
+	puts response.magenta
+end
