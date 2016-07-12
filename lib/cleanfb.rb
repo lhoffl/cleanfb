@@ -5,13 +5,14 @@ module Cleanfb
 	class Clean
 		def remove()
 			return "Please supply a file" if ARGV[0].nil? || ARGV[0].empty?
-  		
-			if (ARGV[0] == "-h" or ARGV[0] == "--help")	
+  			
+			if (ARGV.include? "-h" or ARGV.include? == "--help")	
 				return "Remove backups of an agent from the Puppet master's filebucket.\n\n		Usage:   cleanfb <client>\n\n		options: -h or --help		| help and information\n		         -y        		| defaults all input to yes\n"
-			end	
+			end
 			arg = ARGV[0]	
-			if !ARGV[1].nil? and ARGV[1] == "-y"
+			if !ARGV.nil? and ARGV.include? == "-y" and ARGV.length > 1
   	 		ans = "y"
+				arg = ARGV[1] if (ARGV.index("-y") == 0)
 			else
     		print "Remove #{arg} ? y|n: "
 	   		ans = STDIN.gets.chomp
