@@ -23,8 +23,12 @@ module Cleanfb
   	  	  cmd.each_line do |line|
     	  	  folders = "/opt/puppetlabs/puppet/cache/bucket"
 	     		  sum = line.split(" ")[0]
-  	     		folders += "/" + sum[0] + "/" + sum[1] + "/" + sum[2] + "/" + sum[3] + "/" + sum[4] + "/" + sum[5] + "/" + sum[6] + "/" + sum[7] + "/"
-	        	folders += sum + "/"
+						start = sum.scan /\w/
+						start.join!("/")
+
+  	     		folders += "/" + start + "/" + sum + "/"
+  	     		#folders += "/" + sum[0] + "/" + sum[1] + "/" + sum[2] + "/" + sum[3] + "/" + sum[4] + "/" + sum[5] + "/" + sum[6] + "/" + sum[7] + "/"
+#	        	folders += sum + "/"
 	  	      puts "Removing " + folders
   	 		    cmd = `rm -rf #{folders}`
 		 	    end
