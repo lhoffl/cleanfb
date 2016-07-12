@@ -13,6 +13,7 @@ module Cleanfb
 			if !ARGV[1].nil? and ARGV[1] == "-y"
   	 		ans = "y"
 			else
+				print "test"
     		print "Remove #{arg} ? y|n: "
 	   		ans = STDIN.gets.chomp
 		  end
@@ -22,6 +23,8 @@ module Cleanfb
   	  	  cmd.each_line do |line|
     	  	  folders = "/opt/puppetlabs/puppet/cache/bucket"
 	     		  sum = line.split(" ")[0]
+						sum_start = sum.to_a.join["/"]
+						puts sum_start
   	     		folders += "/" + sum[0] + "/" + sum[1] + "/" + sum[2] + "/" + sum[3] + "/" + sum[4] + "/" + sum[5] + "/" + sum[6] + "/" + sum[7] + "/"
 	        	folders += sum + "/"
 	  	      puts "Removing " + folders
