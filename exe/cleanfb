@@ -11,4 +11,6 @@ cleaner = Cleanfb::Clean.new
 response = cleaner.remove
 unless response.nil? || response.empty? || (response.include? "Please")
 	puts response.magenta
+else
+	puts response
 end
