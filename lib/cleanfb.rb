@@ -43,7 +43,7 @@ module Cleanfb
 	     		  sum = line.split(" ")[0]
 						start = (sum.scan /\w/).join("/")
 
-  	     		path += "/" + start[0..7] + sum + "/"
+  	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Removing " + path 
   	 		    cmd = `rm -rf #{path}`
 		 	    end
