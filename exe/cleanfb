@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'cleanfb'
+
+cleaner = Cleanfb::Clean.new
+
+response = cleaner.remove
+puts response
