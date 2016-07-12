@@ -7,7 +7,7 @@ module Cleanfb
 			return "Please supply a file" if ARGV[0].nil? || ARGV[0].empty?
   		
 			if (ARGV[0] == "-h" or ARGV[0] == "--help")	
-				return "Removes an agent's backups from the Puppet filebucket on the server.\n\n		Usage: cleanfb <client>\n\n		options: -h or --help		| help and information\n		         -y        		| defaults all input to yes\n"
+				return "Remove backups of an agent from the Puppet master's filebucket.\n\n		Usage:   cleanfb <client>\n\n		options: -h or --help		| help and information\n		         -y        		| defaults all input to yes\n"
 			end	
 			arg = ARGV[0]	
 			if !ARGV[1].nil? and ARGV[1] == "-y"
