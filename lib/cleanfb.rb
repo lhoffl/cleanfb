@@ -24,9 +24,9 @@ module Cleanfb
     	  	  folders = "/opt/puppetlabs/puppet/cache/bucket"
 	     		  sum = line.split(" ")[0]
 						start = sum.scan /\w/
-						start.join!("/")
+						start = start.join("/")
 
-  	     		folders += "/" + start + "/" + sum + "/"
+  	     		folders += "/" + start.substring(0,7) + "/" + sum + "/"
   	     		#folders += "/" + sum[0] + "/" + sum[1] + "/" + sum[2] + "/" + sum[3] + "/" + sum[4] + "/" + sum[5] + "/" + sum[6] + "/" + sum[7] + "/"
 #	        	folders += sum + "/"
 	  	      puts "Removing " + folders
