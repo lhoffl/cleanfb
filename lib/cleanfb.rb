@@ -45,7 +45,7 @@ module Cleanfb
 
   	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Removing " + path 
-  	 		    cmd = `rm  #{path}/path #{path}/contents`
+  	 		    cmd = `rm  #{path}path #{path}contents`
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
