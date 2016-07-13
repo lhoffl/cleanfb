@@ -39,13 +39,18 @@ module Cleanfb
     		cmd = `puppet filebucket list -l|grep -i #{arg}`
 		 	  unless cmd.nil? || cmd.empty?
   	  	  cmd.each_line do |line|
-    	  	  path = "/opt/puppetlabs/puppet/cache/bucket"
+						os = `facter os`
+						if(os != 'windows')
+	    	  	  path = "/opt/puppetlabs/puppet/cache/bucket"
+						else
+							path = "C:/ProgramData/PuppetLabs/puppet/cache/bucket"
+						end
 	     		  sum = line.split(" ")[0]
 						start = (sum.scan /\w/).join("/")
 
   	     		path += "/" + start[0..15] + sum + "/"
-	  	      puts "Removing " + path 
-  	 		    cmd = `rm -rf #{path}`
+	  	      puts "Removing " + path
+						Dir.foreach(path) { |file| File.delete(file) }
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
