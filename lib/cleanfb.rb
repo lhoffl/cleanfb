@@ -50,7 +50,7 @@ module Cleanfb
 
   	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Removing " + path
-						Dir.foreach(path) { |file| File.delete(file) }
+						Dir.foreach(path) { |f| File.delete f unless File.directory? f} 
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
