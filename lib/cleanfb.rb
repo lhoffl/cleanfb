@@ -53,7 +53,7 @@ module Cleanfb
 						ans = STDIN.gets.chomp
 						
 						unless ans == "y" || ans == "yes"
-							puts("Ending run")	
+							return "Ending run"	
 						end
 					end
 				end			
