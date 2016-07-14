@@ -37,7 +37,29 @@ module Cleanfb
 			# if yes, retrieve the files and remove them
   		if ans == "y" || ans == "yes"
     		cmd = `puppet filebucket list -l|grep -i #{arg}`
-		 	  unless cmd.nil? || cmd.empty?
+		 	  
+				unless (ARGV.include? "-y")
+					test = cmd.split(" ").last
+					multi_match = false
+
+					cmd.each_line do |line|
+							if !line.include? test
+									multi_match = true
+							end
+					end	
+					
+					if multi_match
+						print "Matched multiple hosts. Remove all? y|n: "
+						ans = STDIN.gets.chomp
+						
+						unless ans == "y" || ans == "yes"
+							puts("Ending run")	
+						end
+					end
+				end			
+				
+
+				unless cmd.nil? || cmd.empty?
   	  	  cmd.each_line do |line|
 	    	  	path = "/opt/puppetlabs/puppet/cache/bucket"
 	     		  sum = line.split(" ")[0]
