@@ -1,4 +1,5 @@
 require "cleanfb/version"
+require 'digest'
 
 module Cleanfb
 
