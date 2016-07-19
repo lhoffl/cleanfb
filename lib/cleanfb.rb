@@ -80,7 +80,7 @@ module Cleanfb
   	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Storing " + path
 						puts "at /root/saved_configs/#{date}_#{time}_#{name}"
-						cmd = `mv -f #{path}contents /root/saved_configs/#{date}_#{time}_#{name}`
+						cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{name}`
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
