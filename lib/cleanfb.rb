@@ -64,11 +64,18 @@ module Cleanfb
 	    	  	path = "/opt/puppetlabs/puppet/cache/bucket"
 	     		  sum = line.split(" ")[0]
 						start = (sum.scan /\w/).join("/")
+						
+						name = line.split(" ")[3]
+						
+						unless Dir.exist? "/root/saved_config/"
+								Dir.mkdir(File.join(Dir.root, "saved_config"), 0700)
+						end
 
   	     		path += "/" + start[0..15] + sum + "/"
-	  	      puts "Removing " + path
+	  	      puts "Storing " + path
+						puts "at /root/saved_config/#{name}"
 						#cmd = `rm -rf #{path}`
-						cmd = `mv -f #{path}contents /root/saved_config/#{path}`
+						cmd = `mv -f #{path}contents /root/saved_config/#{name}`
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
