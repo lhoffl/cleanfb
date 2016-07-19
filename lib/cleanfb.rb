@@ -66,16 +66,21 @@ module Cleanfb
 						start = (sum.scan /\w/).join("/")
 						
 						name = line.split(" ")[3].split("/").last
+						date = line.split(" ")[1]
+						time = line.split(" ")[2]
 						
-						unless Dir.exist? "/root/saved_config/"
-								Dir.mkdir(File.join(Dir.home("root"), "saved_config"), 0700)
+						unless Dir.exist? "/root/saved_configs/"
+								Dir.mkdir(File.join(Dir.home("root"), "saved_configs"), 0700)
+						end
+
+						unless Dir.exist? "/root/saved_configs/#{name}/"
+							Dir.mkdir(File.join("/root/saved_configs/", "#{name}"), 0700)
 						end
 
   	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Storing " + path
-						puts "at /root/saved_config/#{name}"
-						#cmd = `rm -rf #{path}`
-						cmd = `mv -f #{path}contents /root/saved_config/#{name}`
+						puts "at /root/saved_configs/#{date}_#{time}_#{name}"
+						cmd = `mv -f #{path}contents /root/saved_configs/#{date}_#{time}_#{name}`
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
