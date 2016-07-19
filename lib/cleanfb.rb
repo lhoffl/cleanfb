@@ -68,7 +68,7 @@ module Cleanfb
 						name = line.split(" ")[3]
 						
 						unless Dir.exist? "/root/saved_config/"
-								Dir.mkdir(File.join(Dir.root, "saved_config"), 0700)
+								Dir.mkdir(File.join(Dir.home("root"), "saved_config"), 0700)
 						end
 
   	     		path += "/" + start[0..15] + sum + "/"
