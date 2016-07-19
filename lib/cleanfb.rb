@@ -69,18 +69,24 @@ module Cleanfb
 						date = line.split(" ")[1]
 						time = line.split(" ")[2]
 						
-						unless Dir.exist? "/root/saved_configs/"
+						save_dir = "/root/saved_configs/"
+
+						unless Dir.exist? save_dir
 								Dir.mkdir(File.join(Dir.home("root"), "saved_configs"), 0700)
 						end
 
-						unless Dir.exist? "/root/saved_configs/#{name}/"
-							Dir.mkdir(File.join("/root/saved_configs/", "#{name}"), 0700)
+						unless Dir.exist? "#{save_dir}/#{name}/"
+							Dir.mkdir(File.join("#{save_dir}", "#{name}"), 0700)
 						end
-
-  	     		path += "/" + start[0..15] + sum + "/"
-	  	      puts "Storing " + path
-						puts "at /root/saved_configs/#{date}_#{time}_#{name}"
-						cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{name}`
+						
+						if File.exist? "#{path}/contents"
+	  	     		path += "/" + start[0..15] + sum + "/"
+		  	      puts "Storing " + path
+							puts "at /root/saved_configs/#{date}_#{time}_#{name}"
+							cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{name}`
+						else
+	    	  		puts "No file #{arg} found."
+						end
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
