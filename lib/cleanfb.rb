@@ -68,7 +68,7 @@ module Cleanfb
   	     		path += "/" + start[0..15] + sum + "/"
 	  	      puts "Removing " + path
 						#cmd = `rm -rf #{path}`
-						cmd = `mv -f #{path}/content /root/saved_config/#{path}`
+						cmd = `mv -f #{path}contents /root/saved_config/#{path}`
 		 	    end
   	  	else
 	    	  puts "No file #{arg} found."
