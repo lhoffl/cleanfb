@@ -78,6 +78,9 @@ module Cleanfb
 						unless Dir.exist? "#{save_dir}/#{name}/"
 							Dir.mkdir(File.join("#{save_dir}", "#{name}"), 0700)
 						end
+					
+							
+		  	    puts "Storing " + path
 						
 						if File.exist? "#{path}/contents"
 	  	     		path += "/" + start[0..15] + sum + "/"
