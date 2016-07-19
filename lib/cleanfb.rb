@@ -65,7 +65,7 @@ module Cleanfb
 	     		  sum = line.split(" ")[0]
 						start = (sum.scan /\w/).join("/")
 						
-						name = line.split(" ")[3]
+						name = line.split(" ")[3].split("/").last
 						
 						unless Dir.exist? "/root/saved_config/"
 								Dir.mkdir(File.join(Dir.home("root"), "saved_config"), 0700)
