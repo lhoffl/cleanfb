@@ -82,10 +82,10 @@ module Cleanfb
 	  	     	path += "/" + start[0..15] + sum + "/"
 						
 						if File.exist? "#{path}/contents"
-		  	    	puts "Storing " + path
 		  	      puts "Storing " + path
-							puts "at /root/saved_configs/#{date}_#{time}_#{name}"
+							puts "at /root/saved_configs/#{name}/#{date}_#{time}_#{name}"
 							cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{name}`
+							cmd = `rm -rf #{path}`
 						else
 	    	  		puts "No file #{arg} found."
 						end
