@@ -84,25 +84,11 @@ module Cleanfb
 	  	     	path += "/" + start[0..15] + sum + "/"
 						
 						if File.exist? "#{path}/contents"
-							cur_sum = Digest::MD5.file "#{path}/contents"
-							flag = false
-							d = Dir.new("#{path}")
-							Dir.foreach("#{path}") do |file|
-									sum = Digest::MD5.file file
-
-									if sum == cur_sum
-										flag = true
-									end
-							end
 							
-							unless flag
 								puts "Storing " + path
 								puts "at /root/saved_configs/#{name}/#{date}_#{time}_#{file}"
 								cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{file}`
 								cmd = `rm -rf #{path}`
-							else
-								puts "File is already stored"
-							end
 						else
 	    	  		puts "No file #{arg} found."
 						end
