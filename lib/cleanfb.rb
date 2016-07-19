@@ -86,7 +86,8 @@ module Cleanfb
 						if File.exist? "#{path}/contents"
 							cur_sum = Digest::MD5.file "#{path}/contents"
 							flag = false
-							Dir.foreach do |file|
+							d = Dir.new("#{path}")
+							d.foreach do |file|
 									sum = Digest::MD5.file file
 
 									if sum == cur_sum
