@@ -65,7 +65,8 @@ module Cleanfb
 	     		  sum = line.split(" ")[0]
 						start = (sum.scan /\w/).join("/")
 						
-						name = line.split(" ")[3].split("/").last
+						file = line.split(" ")[3].split("/").last
+						name = file.split("_")[0]
 						date = line.split(" ")[1]
 						time = line.split(" ")[2]
 						
@@ -83,8 +84,8 @@ module Cleanfb
 						
 						if File.exist? "#{path}/contents"
 		  	      puts "Storing " + path
-							puts "at /root/saved_configs/#{name}/#{date}_#{time}_#{name}"
-							cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{name}`
+							puts "at /root/saved_configs/#{name}/#{date}_#{time}_#{file}"
+							cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{file}`
 							cmd = `rm -rf #{path}`
 						else
 	    	  		puts "No file #{arg} found."
