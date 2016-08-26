@@ -16,8 +16,7 @@ module Cleanfb
   			
 			# return the help output if requested
 			if ((ARGV.include? "-h") or (ARGV.include? "--help"))
-				return "Remove backups of an agent from the Puppet master's filebucket.\n\n/
-				Usage:   cleanfb <client>\n\n		options: -h or --help		| help and information\n/
+				return "Remove backups of an agent from the Puppet master's filebucket.\n\n		Usage:   cleanfb <client> <options>\n\n		options: -h or --help		| help and information\n
 				-y        		| defaults all input to yes\n"
 
 			end
