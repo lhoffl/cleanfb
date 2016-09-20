@@ -1,3 +1,3 @@
 module Cleanfb
-  VERSION = "0.2.0.4"
+  VERSION = "0.2.0.5"
 end

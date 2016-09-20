@@ -129,7 +129,7 @@ module Cleanfb
 				
 				file = arg
 				sum = Digest::MD5.file file
-				sum.hexdigest 
+				sum = sum.hexdigest + ""
 				start = (sum.scan /\w/).join("/")
 	    	path = "/opt/puppetlabs/puppet/cache/bucket"
 				
