@@ -111,7 +111,7 @@ module Cleanfb
 
 			end
 
-			arg = ARGV[0]	
+			arg = ARGV[1]	
 
 			# set ans to yes automatically if -y option
 			if !ARGV.nil? and (ARGV.include? "-y") and ARGV.length > 1
@@ -145,5 +145,6 @@ module Cleanfb
 	    	  puts "No file #{arg} found."
 		 	end
 			return
-		end	
+		end
+	end	
 end
