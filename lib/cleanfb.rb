@@ -135,8 +135,7 @@ module Cleanfb
 				
 				path += "/" + start[0..15] + sum + "/"
 
-				if File.exist? "#{path}/contents"
-							
+				if File.exist? file
 						puts "Restoring " + path
 						cmd = `mv -f #{file} #{path}contents`
 				else
