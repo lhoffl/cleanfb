@@ -8,7 +8,12 @@ end
 
 cleaner = Cleanfb::Clean.new
 
-response = cleaner.remove
+unless ARGV.include? "restore"
+	response = cleaner.remove
+else
+	respone = cleaner.restore
+end
+
 unless response.nil? || response.empty? || (response.include? "Please")
 	puts response.magenta
 else

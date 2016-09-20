@@ -98,5 +98,52 @@ module Cleanfb
 	  	end
 			return 
 		end
-	end
+
+		def restore()
+
+			# return if no args
+			return "Please supply a file" if ARGV[0].nil? || ARGV[0].empty?
+  			
+			# return the help output if requested
+			if ((ARGV.include? "-h") or (ARGV.include? "--help"))
+				return "Remove backups of an agent from the Puppet master's filebucket.\nBackups are stored at /root/saved_configs/\n\n		Usage:   cleanfb <client> <options>\n\n		options: -h or --help		| help and information\n
+				-y		| defaults all input to yes\n"
+
+			end
+
+			arg = ARGV[0]	
+
+			# set ans to yes automatically if -y option
+			if !ARGV.nil? and (ARGV.include? "-y") and ARGV.length > 1
+  	 		ans = "y"
+				arg = ARGV[1] if (ARGV.index("-y") == 0)
+
+			# else prompt for answer
+			else
+    		print "Restore #{arg} ? y|n: "
+	   		ans = STDIN.gets.chomp
+		  end
+
+			# if yes, retrieve the files and remove them
+  		if ans == "y" || ans == "yes"
+				
+				file = arg
+				sum = Digest::MD5.file file
+				start = (sum.scan /\w/).join("/")
+	    	path = "/opt/puppetlabs/puppet/cache/bucket"
+				
+				path += "/" + start[0..15] + sum + "/"
+
+				if File.exist? "#{path}/contents"
+							
+						puts "Restoring " + path
+						cmd = `mv -f #{file} #{path}contents`
+				else
+	    	  		puts "No file #{arg} found."
+				end
+  	 	else
+	    	  puts "No file #{arg} found."
+		 	end
+			return
+		end	
 end
