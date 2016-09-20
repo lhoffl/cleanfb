@@ -137,6 +137,9 @@ module Cleanfb
 
 				if File.exist? file
 						puts "Restoring " + path
+						unless Dir.exist? path 
+							cmd = `mkdir -p #{path}`
+						end
 						cmd = `mv -f #{file} #{path}contents`
 				else
 	    	  		puts "No file #{arg} found."
