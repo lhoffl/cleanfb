@@ -170,6 +170,7 @@ module Cleanfb
   		if ans == "y" || ans == "yes"
 				
 				info = arg.match /[^_\$_]/	
+				puts info
 				host = info[2]
 	
 				store(host)
