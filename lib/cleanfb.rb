@@ -169,7 +169,10 @@ module Cleanfb
 			# if yes, retrieve the files and remove them
   		if ans == "y" || ans == "yes"
 				
-				store(arg)
+				info = arg.match /[^_\$_]/	
+				host = info[2]
+	
+				store(host)
 
 				file = arg
 				sum = Digest::MD5.file file
