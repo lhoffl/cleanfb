@@ -169,7 +169,7 @@ module Cleanfb
 			# if yes, retrieve the files and remove them
   		if ans == "y" || ans == "yes"
 				
-				host = arg.match(/[^_\$_]/)[17]	
+				host = arg.scan(/[^_\$_]/)[2]
 				puts host
 	
 				store(host)
