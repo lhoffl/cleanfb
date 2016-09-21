@@ -171,23 +171,26 @@ module Cleanfb
 				
 				host = arg.scan(/_\w+\.\w+\.?\w+?_/).join("").gsub!("_", "")
 
-				puts ":: " + host
 				store(host)
 
 				file = arg
-				sum = Digest::MD5.file file
-				sum = sum.hexdigest + ""
-				start = (sum.scan /\w/).join("/")
-	    	path = "/opt/puppetlabs/puppet/cache/bucket"
+				#sum = Digest::MD5.file file
+				#sum = sum.hexdigest + ""
+				#start = (sum.scan /\w/).join("/")
+	    	#path = "/opt/puppetlabs/puppet/cache/bucket"
 				
-				path += "/" + start[0..15] + sum + "/"
+				#path += "/" + start[0..15] + sum + "/"
 
 				if File.exist? file
-						puts "Restoring " + path
-						unless Dir.exist? path 
-							cmd = `mkdir -p #{path}`
-						end
-						cmd = `mv -f #{file} #{path}contents`
+						#puts "Restoring " + path
+						#unless Dir.exist? path 
+						#	cmd = `mkdir -p #{path}`
+						#end
+						
+						
+						#cmd = `cp #{file} #{path}contents`
+						puts  "puppet filebucket -l backup #{file}"
+						cmd = `puppet filebucket -l backup #{file}`
 				else
 	    	  		puts "No file #{arg} found."
 				end
