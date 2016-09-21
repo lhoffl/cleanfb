@@ -169,9 +169,9 @@ module Cleanfb
 			# if yes, retrieve the files and remove them
   		if ans == "y" || ans == "yes"
 				
-				host = arg.scan(/[^_\$_]/)
-				puts host
-	
+				host = arg.scan(/_\w+\.\w+_/).gsub!("_", "")
+
+				puts ":: " + host
 				store(host)
 
 				file = arg
