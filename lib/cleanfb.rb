@@ -132,11 +132,11 @@ module Cleanfb
 								cmd = `mv -f #{path}contents /root/saved_configs/#{name}/#{date}_#{time}_#{file}`
 								cmd = `rm -rf #{path}`
 						else
-	    	  		puts "No file #{arg} found."
+	    	  		puts "No file #{host} found."
 						end
 		 	    end
   	  	else
-	    	  puts "No file #{arg} found."
+	    	  puts "No file #{host} found."
 		 	  end
 			return 
 		end
