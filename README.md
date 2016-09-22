@@ -35,14 +35,16 @@ cleanfb [host] [options]
 
 cleanfb restore [file] [options]
 
-    Backup all files associated with the host on the server's filebucket, and restore the given configuration file.
+    Backup all files associated with the host on the server's filebucket, 
+    and restore the given configuration file.
     -y      | answer yes to all
     --help  | show help message
 
 ###Updating Configuration
 
 Clean the configuration for a host
-# cleanfb hostname
+
+    $ cleanfb hostname
 
 The configuration is now backed up on the server at /root/saved_configs/hostname/date_time_hostname_configuration.yaml
 
@@ -54,7 +56,7 @@ A new configuration will be obtained for the host on the next Puppet run.
 
 To restore a previous saved configuration issue the following command
 
-# cleanfb restore /root/saved_configs/hostname/date_time_host_configuration.yaml
+    $ cleanfb restore /root/saved_configs/hostname/date_time_host_configuration.yaml
 
 
 The current configuration gets backed up and the selected configuration is restored as the primary configuration.
