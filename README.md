@@ -1,8 +1,13 @@
 # Cleanfb
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cleanfb`. To experiment with that code, run `bin/console` for an interactive prompt.
+Cleanfb is a tool that cleans a filebucket on a Puppet server by backing up files to a saved directory.
+This tool intended to be used alongside a Ruby script, capture_config, that captures the configuration of a machine and checks it against copies sent to a Puppet server.
 
-TODO: Delete this and the text above, and describe your gem
+If a configuration is removed from the Puppet node, a new copy is automatically retrieved from the Puppet server's filebucket.
+
+Cleanfb allows out of date configurations to be backed up on the server and for the Puppet node to capture a current configuration.
+
+Old configurations can also be restored using cleanfb.
 
 ## Installation
 
@@ -22,15 +27,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+cleanfb [host] [options]
 
-## Development
+    Backup all files associated with the host on the server's filebucket.
+    -y      | answer yes to all
+    --help  | show help message
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+cleanfb restore [file] [options]
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    Backup all files associated with the host on the server's filebucket, and restore the given configuration file.
+    -y      | answer yes to all
+    --help  | show help message
 
-## Contributing
+###Updating Configuration
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cleanfb.
+Clean the configuration for a host
+# cleanfb hostname
+
+The configuration is now backed up on the server at /root/saved_configs/hostname/date_time_hostname_configuration.yaml
+
+A new configuration will be obtained for the host on the next Puppet run.
+
+
+###Restoring a previous Configuration
+
+
+To restore a previous saved configuration issue the following command
+
+# cleanfb restore /root/saved_configs/hostname/date_time_host_configuration.yaml
+
+
+The current configuration gets backed up and the selected configuration is restored as the primary configuration.
+
+The restored configuration will be obtained by the host from the server on the next Puppet run.
 
