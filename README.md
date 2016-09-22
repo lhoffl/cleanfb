@@ -1,7 +1,7 @@
 # Cleanfb
 
 Cleanfb is a tool that cleans a filebucket on a Puppet server by backing up files to a saved directory.
-This tool intended to be used alongside a Ruby script, capture_config, that captures the configuration of a machine and checks it against copies sent to a Puppet server.
+This tool is intended to be used alongside a Ruby script, capture_config, that captures the configuration of a machine and checks it against copies sent to a Puppet server.
 
 If a configuration is removed from the Puppet node, a new copy is automatically retrieved from the Puppet server's filebucket.
 
