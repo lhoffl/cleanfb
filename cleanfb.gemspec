@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["lhoffl"]
   spec.email         = ["hoffmatt@mail.gvsu.edu"]
 
-  spec.summary       = %q{Cleans the filebucket}
+  spec.summary       = %q{Cleans the filebucket of a Puppet server}
   spec.homepage      = ""
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
