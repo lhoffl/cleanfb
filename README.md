@@ -28,7 +28,7 @@ cleanfb restore [file] [options]
     -y      | answer yes to all
     --help  | show help message
 
-###Updating Configuration
+## Updating Configuration
 
 Clean the configuration for a host
 
@@ -39,7 +39,7 @@ The configuration is now backed up on the server at /root/saved_configs/hostname
 A new configuration will be obtained for the host on the next Puppet run.
 
 
-###Restoring a previous Configuration
+## Restoring a previous Configuration
 
 
 To restore a previous saved configuration issue the following command
