@@ -3,19 +3,19 @@
 require 'cleanfb'
 
 class String
-	def magenta;	"\e[35m#{self}\e[0m" end
+  def magenta;  "\e[35m#{self}\e[0m" end
 end
 
 cleaner = Cleanfb::Clean.new
 
 unless ARGV.include? "restore"
-	response = cleaner.remove
+  response = cleaner.remove
 else
-	respone = cleaner.restore
+  respone = cleaner.restore
 end
 
 unless response.nil? || response.empty? || (response.include? "Please")
-	puts response.magenta
+  puts response.magenta
 else
-	puts response
+  puts response
 end
