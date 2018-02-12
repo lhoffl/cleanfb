@@ -7,11 +7,12 @@ class String
 end
 
 cleaner = Cleanfb::Clean.new
+cleaner.parse_input
 
 unless ARGV.include? "restore"
   response = cleaner.remove
 else
-  respone = cleaner.restore
+  response = cleaner.restore
 end
 
 unless response.nil? || response.empty? || (response.include? "Please")
